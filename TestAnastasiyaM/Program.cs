@@ -16,9 +16,10 @@ namespace TestAnastasiyaM
             string adress = Console.ReadLine();
 
             var content = WebRequestHelpers.GetContent(adress);
-            Console.WriteLine(content);
+            var hrefs = WebRequestHelpers.ParseHrefs(content, HrefsCount);
+            hrefs.ForEach(href => Console.WriteLine(href));
             //WebResponse response = request.GetResponse();
-            
+
             //using (Stream stream = response.GetResponseStream())
             //{
             //    using (StreamReader reader = new StreamReader(stream))
