@@ -7,6 +7,8 @@ namespace TestAnastasiyaM
 {
     class Program
     {
+        private const int HrefsCount = 20;
+
         static void Main(string[] args)
         {
             Console.WriteLine("Введите адрес сайта");
