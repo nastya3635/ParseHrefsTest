@@ -1,7 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Net;
-using System.Text.RegularExpressions;
 using TestAnastasiyaM.Helpers;
 
 namespace TestAnastasiyaM
@@ -9,6 +6,7 @@ namespace TestAnastasiyaM
     class Program
     {
         private const int HrefsCount = 20;
+        private const string OutputFileName = "ParsedHrefs.txt";
 
         static void Main(string[] args)
         {
@@ -17,7 +15,9 @@ namespace TestAnastasiyaM
 
             var content = WebRequestHelpers.GetContent(adress);
             var hrefs = WebRequestHelpers.ParseHrefs(content, HrefsCount);
-            hrefs.ForEach(href => Console.WriteLine(href));
+
+            var filePath = FileHelpers.WriteToFileInTempFolder(hrefs, OutputFileName, false);
+            Console.WriteLine($"Сылки сохранены в: {filePath}");
             //WebResponse response = request.GetResponse();
 
             //using (Stream stream = response.GetResponseStream())
